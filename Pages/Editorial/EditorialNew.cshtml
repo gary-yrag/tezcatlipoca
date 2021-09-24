@@ -1,0 +1,24 @@
+@page
+@using System.Collections.Generic;
+@using cdcore5.Domain.Entity;
+@model cdcore5.Pages.EditorialNewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Crear editorial";
+}
+<div class="text-center">
+    <h1 class="display-4">Crear Editorial</h1>
+    <form method="POST">
+        <div asp-validation-sumary="All"></div>
+    <div>
+      
+        <label>Nombre</label>
+        <input asp-for="editorial.Nombre"/>
+        <span asp-validation-for="editorial.Nombre"></span>
+        <label>Sede</label>
+        <input asp-for="editorial.Sede"/>
+        <span asp-validation-for="editorial.Sede"></span>
+        <input type="submit" value="Guardar"/>
+    </div>
+    </form>  
+</div>

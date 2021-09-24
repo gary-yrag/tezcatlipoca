@@ -1,0 +1,51 @@
+@page
+@using System.Collections.Generic;
+@using cdcore5.Domain.Entity;
+@model cdcore5.Pages.AutorModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Autores";
+}
+<div class="text-center">
+    <h1 class="display-4">Lista de Autores</h1>    
+    <a asp-page="/Autor/AutorNew" class="btn btn-outline-info" >Nuevo autor</a>
+    <div class="table-responsive">
+        <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                    Nombre
+                    </th>
+                    <th>
+                        Apellidos
+                    </th>     
+                    <th>Edit </th>                   
+                    <th>Delete </th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                @foreach (var item in Model.au)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>               
+                    <td class="text-center">
+                        <a asp-page="/Autor/AutorEdit" class="btn btn-outline-primary"  asp-route-id="@item.Id">Edit</a>                        
+                    </td>
+                    
+                    <td class="text-center">
+                        <button type="submit" class="btn btn-outline-danger" asp-route-id ="@item.Id" asp-page-handler="delete">Delete</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        </form>
+    </div>   
+</div>

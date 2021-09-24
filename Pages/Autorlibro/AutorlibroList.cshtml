@@ -1,0 +1,41 @@
+@page
+@using System.Collections.Generic;
+@using cdcore5.Domain.Entity;
+@model cdcore5.Pages.AutorlibroListModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Libros y autores";
+}
+<div class="text-center">
+    <h1 class="display-4">Lista de libros y autores</h1>    
+    <a asp-page="/Autorlibro/AutorlibroNew" class="btn btn-outline-info" >Nuevo libro de autor</a>
+    <div class="table-responsive">
+        <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Autor</th>
+                    <th>Libro</th>                   
+                </tr>
+            </thead>
+            <tbody>
+            
+                @foreach (var item in Model.au)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autores.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LibrosIsbnNavigation.Titulo)
+                    </td>  
+                    <td class="text-center">
+                        <button type="submit" class="btn btn-outline-danger" asp-route-AutoresId ="@item.AutoresId" asp-route-LibrosIsbn="@item.LibrosIsbn" asp-page-handler="delete">Delete</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        </form>
+    </div>   
+</div>

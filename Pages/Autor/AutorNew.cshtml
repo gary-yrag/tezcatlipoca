@@ -1,0 +1,24 @@
+@page
+@using System.Collections.Generic;
+@using cdcore5.Domain.Entity;
+@model cdcore5.Pages.AutorNewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Crear autor";
+}
+<div class="text-center">
+    <h1 class="display-4">Crear autor</h1>
+    <form method="POST">
+        <div asp-validation-sumary="All"></div>
+    <div>
+      
+        <label>Nombre</label>
+        <input asp-for="autore.Nombre"/>
+        <span asp-validation-for="autore.Nombre"></span>
+        <label>Apellidos</label>
+        <input asp-for="autore.Apellidos"/>
+        <span asp-validation-for="autore.Apellidos"></span>
+        <input type="submit" value="Guardar"/>
+    </div>
+    </form>  
+</div>

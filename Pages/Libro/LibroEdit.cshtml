@@ -1,0 +1,48 @@
+@page "{Id:Int}"
+@using System.Collections.Generic;
+@using cdcore5.Domain.Entity;
+@model cdcore5.Pages.LibroEditModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Editar libros";
+}
+ <form method="POST">
+
+    <h1 class="display-4">Editar Libro</h1>
+    <div class="row">
+        <div class="col-md-4">
+                <div asp-validation-sumary="All" ></div> 
+
+                <!--div class="form-group">
+                    <label class="control-label" asp-for="libro.Isbn"></label>
+                    <input asp-for="libro.Isbn" class="form-control" type="hidden"/>
+                    <span asp-validation-for="libro.Isbn" class="text-danger"></span>
+                </div-->
+                <input asp-for="libro.Isbn" type="hidden">
+
+                <div class="form-group">
+                    <label class="control-label">Titulo</label>
+                    <input asp-for="libro.Titulo" class="form-control"/>        
+                    <span asp-validation-for="libro.Titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="libro.EditorialesId"></label>
+                    <select asp-for="libro.EditorialesId" class="form-control" asp-items="@Model.selectEditorialSL"></select>
+                    <span asp-validation-for="libro.EditorialesId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Sinopsis</label>
+                    <input asp-for="libro.Sinopsis" class="form-control"/>
+                    <span asp-validation-for="libro.Sinopsis"></span>
+                </div>
+                <div class="form-group">
+                    <label>Nro. Paginas</label>
+                    <input asp-for="libro.NPaginas" class="form-control"/>
+                    <span asp-validation-for="libro.NPaginas"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar"/>
+                </div>    
+        </div>  
+    </div>
+ </form>
